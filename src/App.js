@@ -96,27 +96,38 @@ function App() {
 	return (
 		<>
 			<div className='score'>Current Player : {player}</div>
-			<div className='board'>
-				{board.map((e, i) => {
-					let cName = "box ";
-					if (e === "X") {
-						cName = cName + "filledX";
-					} else if (e === "O") {
-						cName = cName + "filledO";
-					}
-					return (
-						<div
-							key={i}
-							className={cName}
-							onClick={() => {
-								checkThisBox(i);
-							}}
-						>
-							{e}
-						</div>
-					);
-				})}
+			<div className='container'>
+				<div className='board'>
+					{board.map((e, i) => {
+						let cName = "box ";
+						if (e === "X") {
+							cName = cName + "filledX";
+						} else if (e === "O") {
+							cName = cName + "filledO";
+						}
+						return (
+							<div
+								key={i}
+								className={cName}
+								onClick={() => {
+									checkThisBox(i);
+								}}
+							>
+								{e}
+							</div>
+						);
+					})}
+				</div>
+				<div style={{ textAlign: "center" }}>
+					<div
+						className={isReset ? "resetBtn show" : "resetBtn"}
+						onClick={resetBoard}
+					>
+						Reset Board
+					</div>
+				</div>
 			</div>
+
 			<div className={modal ? "modal show" : "modal"}>
 				<h2>{message.title}</h2>
 				<div className='content'>{message.description}</div>
@@ -129,14 +140,6 @@ function App() {
 					>
 						OK
 					</button>
-				</div>
-			</div>
-			<div style={{ textAlign: "center" }}>
-				<div
-					className={isReset ? "resetBtn show" : "resetBtn"}
-					onClick={resetBoard}
-				>
-					Reset Board
 				</div>
 			</div>
 		</>
