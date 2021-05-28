@@ -101,10 +101,48 @@ html {
 	align-items: center;
 }
 .board .box.filledX {
-	background-color: rgb(218, 69, 49);
+	background-color: rgb(218, 69, 49) !important;
 }
 .board .box.filledO {
-	background-color: #34681cb0;
+	background-color: #34681cb0 !important;
+}
+.box.vertical::after {
+	content: "";
+	width: 10px;
+	height: 100%;
+	background: #3f3f3f;
+	position: absolute;
+	border-radius: 10px;
+	display: inline-block;
+}
+.box.horizontal::after {
+	content: "";
+	width: 100%;
+	height: 10px;
+	background: #3f3f3f;
+	position: absolute;
+	border-radius: 10px;
+	display: inline-block;
+}
+.box.diagonal1::after {
+	content: "";
+	width: 10px;
+	height: 100%;
+	background: #3f3f3f;
+	position: absolute;
+	border-radius: 10px;
+	display: inline-block;
+	transform: rotate(-45deg);
+}
+.box.diagonal2::after {
+	content: "";
+	width: 10px;
+	height: 100%;
+	background: #3f3f3f;
+	position: absolute;
+	border-radius: 10px;
+	display: inline-block;
+	transform: rotate(45deg);
 }
 @media (min-width: 450px) {
 	.board .box {
@@ -132,7 +170,18 @@ html {
 	visibility: hidden;
 	z-index: 101;
 }
-.modal.show {
+.showModal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	background: #3f3f3fb6;
+}
+.showModal .modal {
 	opacity: 1;
 	visibility: visible;
 }
